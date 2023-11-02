@@ -5,22 +5,42 @@
     <v-form @submit.prevent="agregarDatos(datos)">
       <v-row>
         <v-col cols="12" md="6">
-          <v-text-field label="Nombre" v-model="datos.nombre"></v-text-field>
+          <v-text-field
+            label="Nombre"
+            v-model="datos.nombre"
+            :rules="rules"
+          ></v-text-field>
         </v-col>
         <v-col cols="12" md="6">
-          <v-text-field label="Edad" v-model="datos.edad"></v-text-field>
+          <v-text-field
+            label="Edad"
+            v-model="datos.edad"
+            :rules="rules"
+          ></v-text-field>
         </v-col>
         <v-col cols="12" md="6">
-          <v-text-field label="Pais" v-model="datos.pais"></v-text-field>
+          <v-text-field
+            label="Pais"
+            v-model="datos.pais"
+            :rules="rules"
+          ></v-text-field>
         </v-col>
         <v-col cols="12" md="6">
-          <v-text-field label="Estado" v-model="datos.estado"></v-text-field>
+          <v-text-field
+            label="Estado"
+            v-model="datos.estado"
+            :rules="rules"
+          ></v-text-field>
         </v-col>
         <v-col cols="12" md="6">
-          <v-text-field label="Ciudad" v-model="datos.ciudad"></v-text-field>
+          <v-text-field
+            label="Ciudad"
+            v-model="datos.ciudad"
+            :rules="rules"
+          ></v-text-field>
         </v-col>
       </v-row>
-      <v-btn type="submit">Enviar</v-btn>
+      <v-btn type="submit" color="primary">Enviar</v-btn>
     </v-form>
   </v-container>
 </template>
@@ -28,6 +48,12 @@
 export default {
   data() {
     return {
+      rules: [
+        (value) => {
+          if (value) return true;
+          return "Este campo es obligatorio";
+        },
+      ],
       datos: [],
       alerta: false,
       mensajeAlerta: "",
