@@ -19,25 +19,57 @@
           ></v-text-field>
         </v-col>
         <v-col cols="12" md="6">
-          <v-text-field
+          <v-autocomplete
             label="Pais"
-            v-model="datos.pais"
             :rules="rules"
-          ></v-text-field>
+            :items="['Mexico', 'Estados Unidos', 'Canada']"
+            v-model="datos.pais"
+          ></v-autocomplete>
+          <!-- <v-text-field
+            label="Pais"
+            :rules="rules"
+            v-model="datos.pais"
+          ></v-text-field> -->
         </v-col>
         <v-col cols="12" md="6">
-          <v-text-field
+          <v-autocomplete
+            label="Estado"
+            :rules="rules"
+            :items="[
+              'Ohio',
+              'Texas',
+              'Manitoba',
+              'Alberta',
+              'Oaxaca',
+              'Durango',
+            ]"
+            v-model="datos.estado"
+          ></v-autocomplete>
+          <!-- <v-text-field
             label="Estado"
             v-model="datos.estado"
             :rules="rules"
-          ></v-text-field>
+          ></v-text-field> -->
         </v-col>
         <v-col cols="12" md="6">
-          <v-text-field
+          <v-autocomplete
+            label="Ciudad"
+            :rules="rules"
+            :items="[
+              'San Antonio',
+              'Austin',
+              'Lacombe',
+              'calgary',
+              'Ocotlán de Morelos',
+              'Canelas',
+            ]"
+            v-model="datos.ciudad"
+          ></v-autocomplete>
+          <!-- <v-text-field
             label="Ciudad"
             v-model="datos.ciudad"
             :rules="rules"
-          ></v-text-field>
+          ></v-text-field> -->
         </v-col>
       </v-row>
       <v-btn type="submit" color="primary">Enviar</v-btn>
@@ -60,6 +92,11 @@ export default {
     };
   },
   methods: {
+    buscar() {
+      this.paises.forEach((element) => {
+        console.log(element);
+      });
+    },
     alertaT() {
       this.alerta = true;
       setTimeout(() => {
